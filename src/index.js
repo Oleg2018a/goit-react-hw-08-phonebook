@@ -6,9 +6,10 @@ import { StrictMode } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'Global.style';
 import { Provider } from 'react-redux';
-import { store } from 'redux/store';
-// import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from 'redux/store';
 import App from 'components/App';
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom';
 
 const theme = {
  
@@ -18,12 +19,14 @@ const theme = {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      
+      <PersistGate persistor={persistor}>
         <ThemeProvider theme={theme}>
-          <App />
-          <GlobalStyle />
+          <BrowserRouter basename="goit-react-hw-08-phonebook">
+            <App />
+            <GlobalStyle />
+          </BrowserRouter>
         </ThemeProvider>
-    
+      </PersistGate>
     </Provider>
   </StrictMode>
 );

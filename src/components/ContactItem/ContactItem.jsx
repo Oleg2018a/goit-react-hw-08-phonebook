@@ -13,7 +13,7 @@ const ContactItem = ({item}) => {
   };
   return (
     <Wrapper>
-      <p> {`${item.name} : ${item.phone}`}</p>
+      <p> {`${item.name} : ${item.number}`}</p>
 
       <DeleteButton onClick={handleDeleteContact} type="click">
         delete
