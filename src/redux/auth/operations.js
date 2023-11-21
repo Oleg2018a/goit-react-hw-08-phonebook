@@ -6,11 +6,13 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 // Utility to add JWT
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+ 
 };
 
 // Utility to remove JWT
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
+  
 };
 
 export const register = createAsyncThunk(
@@ -58,7 +60,6 @@ export const refreshUser = createAsyncThunk('auth/current', async (_, thunkAPI) 
   // Reading the token from the state via getState()
   const state = thunkAPI.getState();
   const persistedToken = state.auth.token;
-
   if (persistedToken === null) {
     // If there is no token, exit without performing any request
     return thunkAPI.rejectWithValue('Unable to fetch user');

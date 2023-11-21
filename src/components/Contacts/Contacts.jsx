@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import { Box } from '@mui/material';
+import { fetchContacts } from 'redux/operation';
+import { useDispatch } from 'react-redux';
 
 const Contacts = () => {
+   const dispatch = useDispatch();
+  
+
+   useEffect(() => {
+     dispatch(fetchContacts());
+   }, [dispatch]);
     return (
       <>
         <Box
